@@ -25,4 +25,15 @@ export default defineConfig({
       'Permissions-Policy': 'interest-cohort=(), camera=(), microphone=(), geolocation=()',
     },
   },
+  optimizeDeps: {
+    include: [
+      '@angular/core',
+      '@angular/common',
+      '@angular/platform-browser',
+      '@angular/router',
+      '@ngrx/store',
+      '@ngrx/effects',
+      'rxjs',
+    ],
+  },
 });

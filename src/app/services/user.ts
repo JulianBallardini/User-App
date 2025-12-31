@@ -25,8 +25,6 @@ export class UserService {
     },
   ];
 
-  constructor() {}
-
   findAll(): Observable<User[]> {
     return of(this.users);
   }

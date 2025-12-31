@@ -284,6 +284,8 @@
   "testing.automaticallyOpenTestResults": "openOnTestStart",
   "cSpell.words": [
     "lastname",
+    "ngrx",
+    "popperjs",
     "Swal",
     "sweetalert"
   ]

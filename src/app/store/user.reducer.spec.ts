@@ -1,7 +1,12 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { userReducer, UsersState, initialState } from './user.reducer';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { userReducer, initialState } from './user.reducer';
 import { User } from '../models/users.model';
 import { addUser, findAll, updateUser, removeUser } from './users.actions';
+
+// Unmock @ngrx/store for these tests
+beforeEach(() => {
+  vi.unmock('@ngrx/store');
+});
 
 describe('UserReducer', () => {
   it('should return initial state', () => {

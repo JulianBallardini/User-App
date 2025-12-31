@@ -17,7 +17,6 @@
     "format:check": "prettier --check \"src/**/*.{js,ts,html,css,scss,json,md}\"",
     "validate": "npm run lint && npm run format:check && npm run test:run"
   },
-  "eslintConfig": "eslint.config.js",
   "type": "module",
   "prettier": {
     "printWidth": 100,

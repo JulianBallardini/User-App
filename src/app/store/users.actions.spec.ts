@@ -1,6 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { load, findAll, addUser, updateTotal, removeUser, updateUser, selectedUserFull, selectedUserEmpty } from './users.actions';
 import { User } from '../models/users.model';
+
+// Unmock @ngrx/store for these tests
+beforeEach(() => {
+  vi.unmock('@ngrx/store');
+});
 
 describe('Users Actions', () => {
   describe('load', () => {
