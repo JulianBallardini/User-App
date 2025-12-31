@@ -1,0 +1,290 @@
+{
+  // TypeScript & Angular
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.useAliasesForRenames": true,
+  "angular.experimental-ivy": true,
+  "angular.enable-experimental-ivy-prompt": false,
+  "angular.view-engine": "angular",
+
+  // ESLint Configuration
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
+  "eslint.format.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.options": {
+    "extensions": [".ts", ".tsx", ".js", ".jsx", ".html"]
+  },
+  "eslint.packageManager": "npm",
+  "eslint.workingDirectories": ["src"],
+
+  // Prettier Configuration
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.configPath": ".prettierrc.json",
+  "prettier.ignorePath": ".prettierignore",
+  "prettier.documentSelectors": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.html", "**/*.json", "**/*.css", "**/*.scss"],
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+
+  // Language-specific Formatters
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // Angular-specific settings
+  "html.format.enable": false,
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html",
+    "javascript": "html",
+    "javascriptreact": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "files.associations": {
+    "*.component.html": "html",
+    "*.template.html": "html",
+    "*.ng": "html"
+  },
+
+  // NgRx/Redux Configuration
+  "ngrx.reducersPath": "src/app/store",
+  "ngrx.effectsPath": "src/app/store/effects",
+  "ngrx.actionsPath": "src/app/store",
+  "ngrx.entitiesPath": "src/app/models",
+  "ngrx.selectorsPath": "src/app/store/selectors",
+  "ngrx.storeFreeze": true,
+
+  // Vitest Configuration
+  "vitest.enable": true,
+  "vitest.commandLine": "npm test",
+  "vitest.debuggerPort": 9229,
+  "vitest.nodeEnv": "test",
+  "vitest.rootConfig": "./vitest.config.ts",
+  "vitest.workspaceFolder": "",
+
+  // Testing Configuration
+  "testing.automaticallyOpenPeekView": "failureInVisibleDocument",
+  "testing.followRunningTest": true,
+  "testing.openTesting": "openOnTestStart",
+  "testing.coverageBar": true,
+
+  // Editor Configuration
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.trimAutoWhitespace": true,
+  "editor.trimTrailingWhitespace": true,
+  "editor.insertFinalNewline": true,
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 120,
+  "editor.rulers": [80, 120],
+  "editor.wordWrap": "off",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace",
+  "editor.lineHeight": 1.6,
+  "editor.letterSpacing": 0.5,
+  "editor.cursorBlinking": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "editor.inlayHints.enabled": "on",
+
+  // Code Actions on Save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnusedImports": "explicit",
+    "source.addMissingImports": "auto",
+    "source.sortImports": "explicit"
+  },
+
+  // File Settings
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/.angular": true,
+    "**/.nx": true
+  },
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/coverage/**": true
+  },
+
+  // Workspace Settings
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.editor.historyCount": 100,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.statusBar.visible": true,
+  "workbench.sidebar.location": "left",
+
+  // Terminal Configuration
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+  "terminal.integrated.shellArgs.windows": [],
+  "terminal.integrated.env.windows": {
+    "CMDER_ROOT": "C:\\cmder"
+  },
+
+  // Search Settings
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/.git": true
+  },
+  "search.quickOpen.include.history": false,
+
+  // IntelliSense Settings
+  "editor.suggestSelection": "first",
+  "editor.suggest.filterGraceful": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.maxVisibleSuggestions": 50,
+  "editor.suggest.localityBonus": true,
+  "editor.wordBasedSuggestions": "matchingDocuments",
+
+  // Debug Settings
+  "debug.allowBreakpointsEverywhere": true,
+  "debug.console.fontSize": 12,
+  "debug.console.lineHeight": 1.4,
+  "debug.console.wordWrap": true,
+  "debug.internalConsoleOptions": "neverOpen",
+  "debug.showInStatusBar": true,
+
+  // Extensions Specific Settings
+  "extensions.ignoreRecommendations": false,
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+
+  // NgRx DevTools
+  "ngrx.storeDevtools.enabled": true,
+  "ngrx.storeDevtools.maxAge": 2592000000,
+
+  // Angular Schematics
+  "ng-cli.schematics.defaultCollection": "@schematics/angular",
+  "ng-cli.defaultCollection": "@angular/cli",
+  "ng-cli.welcome": false,
+
+  // Git Integration
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.showInlineOpenFileAction": false,
+  "git.suggestSmartCommit": true,
+  "git.postCommitCommand": null,
+  "git.showProgress": true,
+
+  // Language-specific overrides
+  "[angular]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[angularhtml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Performance Settings
+  "editor.semanticHighlighting.enabled": true,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "selection",
+  "editor.renderLineHighlight": "gutter",
+  "editor.occurrencesHighlight": "singleFile",
+  "editor.selectionHighlight": true,
+  "editor.folding": true,
+  "editor.foldingStrategy": "indentation",
+  "editor.showFoldingControls": "always",
+
+  // Experimental Features
+  "experimental.experimental": {
+    "imagePreview": true,
+    "webviewController": true
+  },
+
+  // Explorer Settings
+  "explorer.compactFolders": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.component.ts": "${capture}.html",
+    "*.spec.ts": "${capture}.spec.js",
+    "*.service.ts": "${capture}.service.js",
+    "tsconfig.json": "tsconfig.${dirname}.json",
+    "package.json": "package.${dirname}.json"
+  },
+
+  // Keyboard Shortcuts & Keybindings (will be in keybindings.json)
+  "keyboard.dispatch": "keyCode",
+  "editor.quickSuggestions": {
+    "strings": true,
+    "comments": true,
+    "other": true
+  },
+  "testing.automaticallyOpenTestResults": "openOnTestStart",
+  "cSpell.words": [
+    "lastname",
+    "Swal",
+    "sweetalert"
+  ]
+}

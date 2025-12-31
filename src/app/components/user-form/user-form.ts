@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { User, CreateUserRequest, UpdateUserRequest } from '../../models/users.model';
 import { FormsModule, NgForm } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import Swal from 'sweetalert2';
+import { User } from '../../models/users.model';
 import { addUser, selectedUserEmpty, updateTotal, updateUser } from '../../store/users.actions';
 
 @Component({
@@ -26,16 +26,12 @@ export class UserForm implements OnInit {
 
   initializeUserForEditing(): void {
     const selectedUser = this.selectedUser();
-    console.log('OnInit - selectedUser:', selectedUser);
-    console.log('OnInit - current user:', this.user);
 
     if (selectedUser && selectedUser.id !== undefined && selectedUser.id !== -1) {
       this.user = { ...selectedUser };
-      console.log('User set for editing:', this.user);
     } else {
       // Reset form for new user creation
       this.user = { name: '', lastname: '', email: '', username: '', password: '' };
-      console.log('Form reset for new user');
     }
   }
 
@@ -77,10 +73,6 @@ export class UserForm implements OnInit {
   }
 
   addUser(usuario: User): void {
-    console.log('addUser called with:', usuario);
-    console.log('Current users:', this.users());
-    console.log('Current total:', this.total());
-
     if (!usuario.id || usuario.id === -1) {
       const currentUsers = this.users();
       let newId = 1; // Default ID for first user
@@ -91,12 +83,10 @@ export class UserForm implements OnInit {
       }
 
       usuario.id = newId;
-      console.log('Adding new user with ID:', usuario.id);
 
       this.store.dispatch(addUser({ usuario }));
       this.store.dispatch(updateTotal());
     } else {
-      console.log('Updating existing user:', usuario);
       this.store.dispatch(updateUser({ usuario }));
     }
   }

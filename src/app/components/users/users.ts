@@ -13,6 +13,7 @@ import { removeUser, selectedUserFull, updateTotal } from '../../store/users.act
 export class Users {
   title: string = 'Lista de usuarios';
 
+  // eslint-disable-next-line no-unused-vars
   constructor(private router: Router) {}
 
   private store = inject(Store);

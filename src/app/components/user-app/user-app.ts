@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { addUser, load, removeUser, updateTotal, updateUser } from '../../store/users.actions';
+import { load, updateTotal } from '../../store/users.actions';
 import { User } from '../../models/users.model';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from '../navbar/navbar';

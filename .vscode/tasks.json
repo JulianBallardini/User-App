@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Start Angular Dev Server",
       "type": "npm",
       "script": "start",
       "isBackground": true,
@@ -18,25 +19,67 @@
             "regexp": "bundle generation complete"
           }
         }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
     },
     {
+      "label": "Run Tests (Vitest)",
+      "type": "npm",
+      "script": "test:run",
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Tests Watch (Vitest)",
       "type": "npm",
       "script": "test",
       "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
-      }
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "group": "test"
+    },
+    {
+      "label": "Test Coverage",
+      "type": "npm",
+      "script": "test:coverage",
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "group": "test"
+    },
+    {
+      "label": "Lint Code",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": [
+        "$eslint-stylish"
+      ],
+      "group": "build"
+    },
+    {
+      "label": "Format Code",
+      "type": "npm",
+      "script": "format",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Validate Project",
+      "type": "npm",
+      "script": "validate",
+      "problemMatcher": [
+        "$eslint-stylish"
+      ],
+      "group": "build"
     }
   ]
 }
