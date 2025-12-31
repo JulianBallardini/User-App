@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '../models/users.model';
+import { User } from '../models/users.model';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private users: UserModel[] = [
+  private users: User[] = [
     {
       id: 0,
       name: 'Luca Julián',
       lastname: 'Ballardini',
       email: 'ballardini.lucajulian@gmail.com',
       username: 'xXJulian128Xx',
-      password: 'julian123'
+      password: 'julian123',
     },
     {
       id: 1,
@@ -21,14 +21,13 @@ export class UserService {
       lastname: 'Duffort',
       email: 'mia.duffort@gmail.com',
       username: 'MiaLaMasCapa',
-      password: 'mia123'
-    }
+      password: 'mia123',
+    },
   ];
 
-  constructor(){};
+  constructor() {}
 
-  findAll(): Observable<UserModel[]>{
-    return of(this.users)
+  findAll(): Observable<User[]> {
+    return of(this.users);
   }
-
 }

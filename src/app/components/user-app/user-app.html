@@ -1,18 +1,5 @@
+<navbar />
+
 <div class="container my-4">
-    <h2>{{title}}</h2>
-
-
-    <div class="row">
-
-        <user-form (newUserEventEmitter)="addUser($event)" (setFormEventEmitter)="setOpen()" [openForm]="openForm"
-            [user]="userSelected" />
-
-        <div class="col">
-
-            <users (removeUserEventEmitter)="removeUser($event)" (selectedUserEventEmitter)="updateUser($event)" />
-
-        </div>
-
-    </div>
-
+  <router-outlet />
 </div>

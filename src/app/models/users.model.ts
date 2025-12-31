@@ -1,8 +1,24 @@
-export class UserModel{
-    id: number=-1;
-    name!: string;
-    lastname!: string;
-    email!: string;
-    username!: string;
-    password!: string;
+export interface User {
+  id?: number;
+  name: string;
+  lastname: string;
+  email: string;
+  username: string;
+  password: string;
+}
+
+export interface CreateUserRequest {
+  name: string;
+  lastname: string;
+  email: string;
+  username: string;
+  password: string;
+}
+
+export interface UpdateUserRequest {
+  id: number;
+  name?: string;
+  lastname?: string;
+  email?: string;
+  username?: string;
 }
