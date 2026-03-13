@@ -1,9 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { userReducer, initialState } from './user.reducer';
 import { User } from '../models/users.model';
-import { addUser, findAll, updateUser, removeUser } from './users.actions';
+import { addUserSuccess, findAll, updateUserSuccess, removeUser } from './users.actions';
 
-// Unmock @ngrx/store for these tests
 beforeEach(() => {
   vi.unmock('@ngrx/store');
 });
@@ -24,21 +23,21 @@ describe('UserReducer', () => {
     expect(result.users).toEqual(users);
   });
 
-  it('should handle addUser action', () => {
+  it('should handle addUserSuccess action', () => {
     const user: User = { id: 1, name: 'John', lastname: 'Doe', email: 'john@example.com', username: 'johndoe', password: 'password' };
     
-    const result = userReducer(initialState, addUser({ usuario: user }));
+    const result = userReducer(initialState, addUserSuccess({ usuario: user }));
     
     expect(result.users).toHaveLength(1);
     expect(result.users[0]).toEqual(user);
   });
 
-  it('should handle updateUser action', () => {
+  it('should handle updateUserSuccess action', () => {
     const existingUser: User = { id: 1, name: 'John', lastname: 'Doe', email: 'john@example.com', username: 'johndoe', password: 'password' };
     const updatedUser: User = { id: 1, name: 'John Updated', lastname: 'Doe', email: 'john.updated@example.com', username: 'johndoe', password: 'password' };
     
-    const stateWithUser = userReducer(initialState, addUser({ usuario: existingUser }));
-    const result = userReducer(stateWithUser, updateUser({ usuario: updatedUser }));
+    const stateWithUser = userReducer(initialState, addUserSuccess({ usuario: existingUser }));
+    const result = userReducer(stateWithUser, updateUserSuccess({ usuario: updatedUser }));
     
     expect(result.users[0].name).toBe('John Updated');
     expect(result.users[0].email).toBe('john.updated@example.com');
@@ -47,7 +46,7 @@ describe('UserReducer', () => {
   it('should handle removeUser action', () => {
     const user: User = { id: 1, name: 'John', lastname: 'Doe', email: 'john@example.com', username: 'johndoe', password: 'password' };
     
-    const stateWithUser = userReducer(initialState, addUser({ usuario: user }));
+    const stateWithUser = userReducer(initialState, addUserSuccess({ usuario: user }));
     const result = userReducer(stateWithUser, removeUser({ id: 1 }));
     
     expect(result.users).toHaveLength(0);

@@ -10,6 +10,7 @@
             placeholder="Nombre"
             #name="ngModel"
             minlength="3"
+            maxlength="20"
             name="name"
             [(ngModel)]="user.name"
             class="form-control my-2"
@@ -23,6 +24,9 @@
             @if (name.errors!['minlength']) {
               <div class="alert alert-danger">El nombre debe tener mínimo 3 caracteres</div>
             }
+            @if (name.errors!['maxlength']){
+              <div class="alert alert-danger">El nombre puede tener como máximo 20 caracteres</div>
+            }
           }
         </div>
         <div>
@@ -30,6 +34,7 @@
             placeholder="Apellido"
             #lastname="ngModel"
             minlength="3"
+            maxlength="30"
             name="lastname"
             [(ngModel)]="user.lastname"
             class="form-control my-2"
@@ -42,6 +47,9 @@
             @if (lastname.errors!['minlength']) {
               <div class="alert alert-danger">El apellido debe tener mínimo 3 caracteres</div>
             }
+            @if (lastname.errors!['maxlength']){
+              <div class="alert alert-danger">El apellido puede tener como máximo 30 caracteres</div>
+            }
           }
         </div>
         <div>
@@ -49,6 +57,7 @@
             placeholder="email"
             email=""
             type="email"
+            maxlength="40"
             #email="ngModel"
             name="email"
             [(ngModel)]="user.email"
@@ -62,6 +71,9 @@
             @if (email.errors!['email']) {
               <div class="alert alert-danger">El email no tiene el formato correcto</div>
             }
+            @if (email.errors!['maxlength']){
+              <div class="alert alert-danger">El email puede tener como máximo 40 caracteres</div>
+            }
           }
         </div>
         <div>
@@ -69,6 +81,7 @@
             placeholder="Nombre de usuario"
             #username="ngModel"
             minlength="3"
+            maxlength="12"
             name="username"
             [(ngModel)]="user.username"
             class="form-control my-2"
@@ -83,6 +96,9 @@
                 El nombre de usuario debe tener mínimo 3 caracteres
               </div>
             }
+            @if (username.errors!['maxlength']){
+              <div class="alert alert-danger">El nombre de usuario puede tener como máximo 12 caracteres</div>
+            }
           }
         </div>
         <div>
@@ -91,6 +107,7 @@
             type="password"
             #password="ngModel"
             minlength="8"
+            maxlength="30"
             name="password"
             [(ngModel)]="user.password"
             class="form-control my-2"
@@ -102,6 +119,9 @@
             }
             @if (password.errors!['minlength']) {
               <div class="alert alert-danger">la contraseña debe tener mínimo 8 caracteres</div>
+            }
+            @if (password.errors!['maxlength']){
+              <div class="alert alert-danger">La contraseña puede tener como máximo 30 caracteres</div>
             }
           }
         </div>

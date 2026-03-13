@@ -7,6 +7,14 @@ export interface User {
   password: string;
 }
 
+export interface Page<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+}
+
 export interface CreateUserRequest {
   name: string;
   lastname: string;
@@ -17,8 +25,8 @@ export interface CreateUserRequest {
 
 export interface UpdateUserRequest {
   id: number;
-  name?: string;
-  lastname?: string;
-  email?: string;
-  username?: string;
+  name: string;
+  lastname: string;
+  email: string;
+  username: string;
 }

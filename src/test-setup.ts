@@ -1,6 +1,11 @@
+import 'zone.js';
 import '@testing-library/jest-dom';
 import * as matchers from '@testing-library/jest-dom/matchers';
 import { expect, vi } from 'vitest';
+import { TestBed } from '@angular/core/testing';
+import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing';
+
+TestBed.initTestEnvironment(BrowserTestingModule, platformBrowserTesting());
 
 // Import Angular compiler to handle JIT compilation issues
 import '@angular/compiler';

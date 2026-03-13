@@ -1,11 +1,25 @@
 import { describe, it, expect, beforeEach } from 'vitest';
+import { of } from 'rxjs';
 import { UserService } from './user';
+import { User } from '../models/users.model';
+
+const mockUsers: User[] = [
+  { id: 1, name: 'Luca Julián', lastname: 'Test', email: 'luca@test.com', username: 'luca', password: '123' },
+  { id: 2, name: 'Mia', lastname: 'Test', email: 'mia@test.com', username: 'mia', password: '123' },
+];
+
+const createMockHttpClient = () => ({
+  get: () => of(mockUsers),
+  post: () => of({}),
+  put: () => of({}),
+  delete: () => of({}),
+});
 
 describe('UserService', () => {
   let service: UserService;
 
   beforeEach(() => {
-    service = new UserService();
+    service = new UserService(createMockHttpClient() as any);
   });
 
   it('should be created', () => {

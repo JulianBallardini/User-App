@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import Swal from 'sweetalert2';
 import { User } from '../../models/users.model';
 import { addUser, selectedUserEmpty, updateTotal, updateUser } from '../../store/users.actions';
+import { UserService } from '../../services/user';
 
 @Component({
   selector: 'user-form',
@@ -12,11 +13,14 @@ import { addUser, selectedUserEmpty, updateTotal, updateUser } from '../../store
   templateUrl: './user-form.html',
 })
 export class UserForm implements OnInit {
+  private service = inject(UserService);
   private store = inject(Store);
+  private route = inject(ActivatedRoute);
   private router = inject(Router);
   users = this.store.selectSignal((state) => state.users.users);
   total = this.store.selectSignal((state) => state.users.total);
   selectedUser = this.store.selectSignal((state) => state.users.selectedUser);
+  error = this.store.selectSignal((state) => state.users.error);
 
   user: User = { name: '', lastname: '', email: '', username: '', password: '' };
 
@@ -27,17 +31,21 @@ export class UserForm implements OnInit {
   initializeUserForEditing(): void {
     const selectedUser = this.selectedUser();
 
-    if (selectedUser && selectedUser.id !== undefined && selectedUser.id !== -1) {
-      this.user = { ...selectedUser };
-    } else {
-      // Reset form for new user creation
-      this.user = { name: '', lastname: '', email: '', username: '', password: '' };
-    }
+    this.route.paramMap.subscribe((params) => {
+      const id: number = +(params.get('id') || -1);
+
+      if (this.service.findById(id) != null) {
+        this.user = { ...selectedUser };
+      } else {
+        // Reset form for new user creation
+        this.user = { name: '', lastname: '', email: '', username: '', password: '' };
+      }
+    });
   }
 
   editingUser(): boolean {
     return (
-      this.selectedUser() && this.selectedUser().id !== undefined && this.selectedUser().id !== -1
+      this.selectedUser() && this.selectedUser().id !== undefined && this.selectedUser().id !== null
     );
   }
 
@@ -56,14 +64,41 @@ export class UserForm implements OnInit {
     if (userForm.valid) {
       this.addUser(this.user);
 
-      Swal.fire({
-        title: 'User created success',
-        text: this.user.username + (this.editingUser() ? ' has been updated' : ' has been added'),
-        icon: 'success',
-      }).then(() => {
-        // Navigate after user closes the alert
-        this.router.navigate(['/users']);
-      });
+      // Check for errors after a short delay to allow effects to complete
+      setTimeout(() => {
+        const currentError = this.error();
+        if (currentError) {
+          let errorMessage = 'An error occurred while saving the user';
+
+          // Extract error message from backend JSON response
+          if (currentError.error) {
+            if (typeof currentError.error === 'string') {
+              errorMessage = currentError.error;
+            } else if (currentError.error.message) {
+              errorMessage = currentError.error.message;
+            } else {
+              errorMessage = JSON.stringify(currentError.error);
+            }
+          } else if (currentError.message) {
+            errorMessage = currentError.message;
+          }
+
+          Swal.fire({
+            title: 'Error',
+            text: errorMessage,
+            icon: 'error',
+          });
+        } else {
+          Swal.fire({
+            title: 'Success',
+            text:
+              this.user.username + (this.editingUser() ? ' has been updated' : ' has been added'),
+            icon: 'success',
+          }).then(() => {
+            this.router.navigate(['/users']);
+          });
+        }
+      }, 500);
     }
   }
 
@@ -73,9 +108,9 @@ export class UserForm implements OnInit {
   }
 
   addUser(usuario: User): void {
-    if (!usuario.id || usuario.id === -1) {
+    if (usuario.id == null || usuario.id === -1) {
       const currentUsers = this.users();
-      let newId = 1; // Default ID for first user
+      let newId = 0; // Default ID for first user
 
       if (currentUsers.length > 0) {
         // Find the highest existing ID and add 1

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { load, updateTotal } from '../../store/users.actions';
+import { loadPage } from '../../store/users.actions';
 import { User } from '../../models/users.model';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from '../navbar/navbar';
@@ -18,11 +18,6 @@ export class UserApp implements OnInit {
   total = this.store.selectSignal((state) => state.users.total);
 
   ngOnInit(): void {
-    this.store.dispatch(load());
-    this.store.dispatch(updateTotal());
-  }
-
-  updateUser(userRow: User): void {
-    this.userSelected = { ...userRow };
+    this.store.dispatch(loadPage({ page: 0 }));
   }
 }

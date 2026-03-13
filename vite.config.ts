@@ -34,6 +34,7 @@ export default defineConfig({
       '@ngrx/store',
       '@ngrx/effects',
       'rxjs',
+      'zone.js',
     ],
   },
 });
